@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZhuSong — ACEO Art Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f5f0e8;
+            color: #3d3d3d;
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.6;
+        }
+        
+        /* 导航 */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(245, 240, 232, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #d4c5b0;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .nav-logo {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #5c4a3d;
+            letter-spacing: 2px;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: #8b7355;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #5c4a3d;
+        }
+        
+        .lang-switch-nav {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-switch-nav button {
+            background: none;
+            border: 1px solid #d4c5b0;
+            color: #8b7355;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.75em;
+            transition: all 0.3s;
+        }
+        
+        .lang-switch-nav button:hover {
+            background: #d4c5b0;
+            color: #fff;
+        }
+        
+        .lang-switch-nav button.active {
+            background: #8b7355;
+            color: #fff;
+            border-color: #8b7355;
+        }
+        
+        /* 英雄区 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            color: #5c4a3d;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1em;
+            color: #a08060;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        .hero-desc {
+            max-width: 500px;
+            color: #8b7355;
+            font-size: 1em;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        
+        .hero-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-contact a {
+            color: #5c4a3d;
+            text-decoration: none;
+            border: 1px solid #d4c5b0;
+            padding: 10px 24px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        
+        .hero-contact a:hover {
+            background: #5c4a3d;
+            color: #f5f0e8;
+            border-color: #5c4a3d;
+        }
+        
+        /* 分隔线 */
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: #d4c5b0;
+            margin: 0 auto;
+        }
+        
+        /* 关于 */
+        .about {
+            padding: 80px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: 1.8em;
+            color: #5c4a3d;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+        
+        .about p {
+            color: #8b7355;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+        
+        /* 作品展示 */
+        .works {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .works h2 {
+            text-align: center;
+            font-size: 1.8em;
+            color: #5c4a3d;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+        }
+        
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .work-card {
+            background: #fff;
+            border: 1px solid #d4c5b0;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        
+        .work-card img {
+            width: 100%;
+            aspect-ratio: 2.5/3.5;
+            object-fit: cover;
+            border: 1px solid #e8e0d5;
+            margin-bottom: 20px;
+        }
+        
+        .work-badges {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .work-series {
+            font-size: 0.65em;
+            color: #fff;
+            background: #5c4a3d;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+        }
+        
+        .work-limited {
+            font-size: 0.65em;
+            color: #a08060;
+            border: 1px solid #a08060;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+        }
+        
+        .work-title {
+            font-size: 1.3em;
+            color: #5c4a3d;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .work-edition {
+            font-size: 1em;
+            color: #a08060;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .work-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #5c4a3d;
+            color: #f5f0e8;
+            font-size: 0.65em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+        }
+        
+        .work-status.sold {
+            background: #a08060;
+        }
+        
+        .work-status.available {
+            background: #6b8e5e;
+        }
+        
+        /* 占位卡片 */
+        .work-card.placeholder {
+            opacity: 0.6;
+        }
+        
+        .work-card.placeholder:hover {
+            transform: none;
+            box-shadow: none;
+            cursor: default;
+        }
+        
+        .placeholder-img {
+            width: 100%;
+            aspect-ratio: 2.5/3.5;
+            background: #e8e0d5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0a090;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            border: 1px dashed #d4c5b0;
+        }
+        
+        /* 联系 */
+        .contact {
+            padding: 80px 20px;
+            text-align: center;
+            background: #faf8f4;
+            border-top: 1px solid #d4c5b0;
+        }
+        
+        .contact h2 {
+            font-size: 1.8em;
+            color: #5c4a3d;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+        
+        .contact-info {
+            color: #8b7355;
+            line-height: 2.2;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info a {
+            color: #5c4a3d;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .social a {
+            color: #8b7355;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+        
+        .social a:hover {
+            color: #5c4a3d;
+        }
+        
+        /* 页脚 */
+        .footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #b0a090;
+            border-top: 1px solid #d4c5b0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* 移动端 */
+        @media (max-width: 900px) {
+            .works-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .nav {
+                padding: 15px 20px;
+            }
+            
+            .nav-links a {
+                margin-left: 15px;
+                font-size: 0.8em;
+            }
+            
+            .nav-right {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9em;
+            }
+            
+            .works-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .work-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="nav">
+        <div class="nav-logo">ZHUSONG</div>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#about" class="nav-about">About</a>
+                <a href="#works" class="nav-works">Works</a>
+                <a href="#contact" class="nav-contact">Contact</a>
+            </div>
+            <div class="lang-switch-nav">
+                <button class="active" onclick="switchLang('en')" id="btn-en">EN</button>
+                <button onclick="switchLang('zh')" id="btn-zh">中文</button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 英雄区 -->
+    <section class="hero">
+        <h1>ZhuSong</h1>
+        <div class="hero-subtitle en">ACEO Art Cards</div>
+        <div class="hero-subtitle zh hidden">ACEO 艺术卡片</div>
+        <div class="section-divider" style="margin: 20px auto;"></div>
+        <p class="hero-desc en">
+            Handcrafted 2.5 × 3.5 inch art cards. Tea-stained paper, vintage collage, and digital prints. Each piece carries a unique story and ownership history.
+        </p>
+        <p class="hero-desc zh hidden">
+            手工制作的 2.5 × 3.5 英寸艺术卡片。茶染纸、复古拼贴与数字版画。每件作品都有独特的故事与收藏历史。
+        </p>
+        <div class="hero-contact">
+            <a href="https://instagram.com/zhusongxp" target="_blank">Instagram</a>
+            <a href="mailto:17610ivanzhu@gmail.com">Email</a>
+        </div>
+    </section>
+    
+    <!-- 关于 -->
+    <section class="about" id="about">
+        <h2 class="en">About</h2>
+        <h2 class="zh hidden">关于</h2>
+        <div class="section-divider" style="margin-bottom: 30px;"></div>
+        <p class="en">
+            I create ACEO (Art Cards Editions and Originals) — small-format artworks measuring 2.5 × 3.5 inches.
+        </p>
+        <p class="zh hidden">
+            我创作 ACEO（Art Cards Editions and Originals）—— 尺寸为 2.5 × 3.5 英寸的小型艺术品。
+        </p>
+        <p class="en">
+            My process begins with tea-stained or coffee-dyed paper, layered with fragments from vintage magazines, handwritten notes, and found objects. Each card is sealed with Mod Podge and assigned a unique digital identity.
+        </p>
+        <p class="zh hidden">
+            我的创作从茶染或咖啡染的纸张开始，叠加复古杂志碎片、手写笔记与现成物。每张卡片以 Mod Podge 封层，并赋予独特的数字身份。
+        </p>
+        <p class="en">
+            Every piece is part of a limited series. Scan the QR code on the back to view its full history, current owner, and provenance.
+        </p>
+        <p class="zh hidden">
+            每件作品均为限量系列。扫描背面的二维码，查看完整历史、现任收藏者与流转记录。
+        </p>
+    </section>
+    
+    <!-- 作品 -->
+    <section class="works" id="works">
+        <h2 class="en">Selected Works</h2>
+        <h2 class="zh hidden">精选作品</h2>
+        <div class="section-divider" style="margin-bottom: 50px;"></div>
+        
+        <div class="works-grid">
+            <!-- 作品1 -->
+            <a href="https://zhusong.github.io/aceo-001" class="work-card" target="_blank">
+                <div class="work-status available">Available</div>
+                <img src="aceo-001/artwork.jpg" alt="Urban Dreams">
+                <div class="work-badges">
+                    <span class="work-series">Series No. 001</span>
+                    <span class="work-limited">Limited</span>
+                </div>
+                <div class="work-title en">Urban Dreams</div>
+                <div class="work-title zh hidden">城市梦境</div>
+                <div class="work-edition">03 / 50</div>
+            </a>
+            
+            <!-- 作品2 -->
+            <a href="https://zhusong.github.io/aceo-002" class="work-card" target="_blank">
+                <div class="work-status sold">Sold</div>
+                <img src="aceo-002/artwork.jpg" alt="Botanical Study">
+                <div class="work-badges">
+                    <span class="work-series">Series No. 002</span>
+                    <span class="work-limited">1 of 1</span>
+                </div>
+                <div class="work-title en">Botanical Study</div>
+                <div class="work-title zh hidden">植物研究</div>
+                <div class="work-edition">Original</div>
+            </a>
+            
+            <!-- 作品3 -->
+            <a href="https://zhusong.github.io/aceo-003" class="work-card" target="_blank">
+                <div class="work-status available">Available</div>
+                <img src="aceo-003/artwork.jpg" alt="Vintage Letters">
+                <div class="work-badges">
+                    <span class="work-series">Series No. 003</span>
+                    <span class="work-limited">Limited</span>
+                </div>
+                <div class="work-title en">Vintage Letters</div>
+                <div class="work-title zh hidden">复古信件</div>
+                <div class="work-edition">12 / 25</div>
+            </a>
+            
+            <!-- 作品4 -->
+            <a href="https://zhusong.github.io/aceo-004" class="work-card" target="_blank">
+                <div class="work-status available">Available</div>
+                <img src="aceo-004/artwork.jpg" alt="Pressed Flowers">
+                <div class="work-badges">
+                    <span class="work-series">Series No. 004</span>
+                    <span class="work-limited">Limited</span>
+                </div>
+                <div class="work-title en">Pressed Flowers</div>
+                <div class="work-title zh hidden">压花集</div>
+                <div class="work-edition">07 / 30</div>
+            </a>
+            
+            <!-- 作品5 -->
+            <a href="https://zhusong.github.io/aceo-005" class="work-card" target="_blank">
+                <div class="work-status sold">Sold</div>
+                <img src="aceo-005/artwork.jpg" alt="Industrial Rust">
+                <div class="work-badges">
+                    <span class="work-series">Series No. 005</span>
+                    <span class="work-limited">1 of 1</span>
+                </div>
+                <div class="work-title en">Industrial Rust</div>
+                <div class="work-title zh hidden">工业锈迹</div>
+                <div class="work-edition">Original</div>
+            </a>
+            
+            <!-- 占位作品6 -->
+            <div class="work-card placeholder">
+                <div class="placeholder-img">Coming Soon</div>
+                <div class="work-badges">
+                    <span class="work-series">Series No. 006</span>
+                    <span class="work-limited">TBA</span>
+                </div>
+                <div class="work-title en">TBA</div>
+                <div class="work-title zh hidden">待定</div>
+                <div class="work-edition">—</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系 -->
+    <section class="contact" id="contact">
+        <h2 class="en">Contact</h2>
+        <h2 class="zh hidden">联系</h2>
+        <div class="section-divider" style="margin-bottom: 30px;"></div>
+        
+        <div class="contact-info">
+            <p class="en">For commissions, collaborations, or inquiries:</p>
+            <p class="zh hidden">委托、合作或咨询：</p>
+            <p><a href="mailto:17610ivanzhu@gmail.com">17610ivanzhu@gmail.com</a></p>
+            <p class="en">Los Angeles, CA</p>
+            <p class="zh hidden">洛杉矶，加州</p>
+        </div>
+        
+        <div class="social">
+            <a href="https://instagram.com/zhusongxp" target="_blank">Instagram</a>
+            <a href="https://github.com/zhusong" target="_blank">GitHub</a>
+            <a href="mailto:17610ivanzhu@gmail.com">Email</a>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <span class="en">© 2026 ZhuSong · ACEO Art Cards · All Rights Reserved</span>
+        <span class="zh hidden">© 2026 ZhuSong · ACEO 艺术卡片 · 版权所有</span>
+    </footer>
+    
+    <script>
+        function switchLang(lang) {
+            const enElements = document.querySelectorAll('.en');
+            const zhElements = document.querySelectorAll('.zh');
+            const btnEn = document.getElementById('btn-en');
+            const btnZh = document.getElementById('btn-zh');
+            
+            if (lang === 'en') {
+                enElements.forEach(el => el.classList.remove('hidden'));
+                zhElements.forEach(el => el.classList.add('hidden'));
+                btnEn.classList.add('active');
+                btnZh.classList.remove('active');
+                document.documentElement.lang = 'en';
+                document.title = 'ZhuSong — ACEO Art Cards';
+            } else {
+                enElements.forEach(el => el.classList.add('hidden'));
+                zhElements.forEach(el => el.classList.remove('hidden'));
+                btnEn.classList.remove('active');
+                btnZh.classList.add('active');
+                document.documentElement.lang = 'zh';
+                document.title = 'ZhuSong — ACEO 艺术卡片';
+            }
+        }
+    </script>
+</body>
+</html>

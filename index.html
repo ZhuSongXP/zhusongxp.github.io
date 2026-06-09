@@ -14,8 +14,8 @@
         body {
             background: #f5f0e8;
             color: #3d3d3d;
-            font-family: Georgia, 'Times New Roman', serif;
-            line-height: 1.8;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            line-height: 1.6;
         }
         
         .lang-switch {
@@ -33,6 +33,7 @@
             cursor: pointer;
             font-family: inherit;
             font-size: 0.75em;
+            letter-spacing: 2px;
             transition: all 0.3s;
         }
         
@@ -42,15 +43,15 @@
         }
         
         .lang-switch button.active {
-            background: #8b7355;
-            color: #fff;
-            border-color: #8b7355;
+            background: #5c4a3d;
+            color: #f5f0e8;
+            border-color: #5c4a3d;
         }
         
         .container {
-            max-width: 500px;
+            max-width: 560px;
             margin: 0 auto;
-            padding: 60px 30px;
+            padding: 80px 30px;
             text-align: center;
             min-height: 100vh;
             display: flex;
@@ -59,66 +60,91 @@
         }
         
         h1 {
-            font-size: 2.8em;
-            letter-spacing: 8px;
+            font-size: 3em;
+            font-weight: 300;
+            letter-spacing: 12px;
             color: #5c4a3d;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         
         .subtitle {
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: #a08060;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         .divider {
-            width: 50px;
-            height: 1px;
+            width: 1px;
+            height: 60px;
             background: #d4c5b0;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
         }
         
         .tagline {
-            font-size: 1.1em;
+            font-size: 1.15em;
             color: #8b7355;
             font-style: italic;
-            margin-bottom: 40px;
-            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 60px;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
         }
         
         .details {
             text-align: left;
-            background: #fff;
-            border: 1px solid #d4c5b0;
-            padding: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
         
         .detail-item {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            padding-left: 30px;
+            border-left: 1px solid #d4c5b0;
+            position: relative;
         }
         
         .detail-item:last-child {
             margin-bottom: 0;
         }
         
+        .detail-item::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 8px;
+            width: 5px;
+            height: 5px;
+            background: #a08060;
+            border-radius: 50%;
+        }
+        
         .detail-label {
-            font-size: 0.7em;
-            color: #b0a090;
-            letter-spacing: 3px;
+            font-size: 0.65em;
+            color: #a08060;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
+            font-weight: 400;
         }
         
         .detail-text {
-            font-size: 0.95em;
+            font-size: 1em;
             color: #5c4a3d;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+        
+        .detail-text em {
+            font-style: italic;
+            color: #8b7355;
         }
         
         .links {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
         
         .links a {
@@ -126,11 +152,11 @@
             color: #5c4a3d;
             text-decoration: none;
             border: 1px solid #d4c5b0;
-            padding: 10px 28px;
-            margin: 0 8px 10px;
-            font-size: 0.85em;
-            letter-spacing: 2px;
-            transition: all 0.3s;
+            padding: 12px 32px;
+            font-size: 0.8em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.4s;
         }
         
         .links a:hover {
@@ -140,9 +166,10 @@
         }
         
         .location {
-            font-size: 0.8em;
+            font-size: 0.75em;
             color: #b0a090;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
         
         .hidden {
@@ -152,20 +179,38 @@
         @media (max-width: 480px) {
             .lang-switch {
                 position: static;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
                 text-align: right;
                 padding: 0 20px;
             }
             
             .container {
-                padding: 40px 20px;
+                padding: 50px 20px;
             }
             
             h1 {
                 font-size: 2.2em;
+                letter-spacing: 8px;
+            }
+            
+            .detail-item {
+                padding-left: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .links {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+            
+            .links a {
+                width: 200px;
+                text-align: center;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="lang-switch">
@@ -180,36 +225,63 @@
         <div class="divider"></div>
         
         <div class="tagline en">
-            "Each card carries a story — tea-stained, collaged, and sealed with time."
+            "Each card carries a story —<<br>tea-stained, collaged, and sealed with time."
         </div>
         <div class="tagline zh hidden">
-            "每张卡片都承载着一个故事——茶染、拼贴、被时间封存。"
+            "每张卡片都承载着一个故事——<<br>茶染、拼贴、被时间封存。"
         </div>
         
         <div class="details">
             <div class="detail-item">
-                <div class="detail-label en">Format</div>
-                <div class="detail-label zh hidden">规格</div>
-                <div class="detail-text en">2.5 × 3.5 inches — the standard ACEO size</div>
-                <div class="detail-text zh hidden">2.5 × 3.5 英寸——标准 ACEO 尺寸</div>
+                <div class="detail-label en">Dimensions</div>
+                <div class="detail-label zh hidden">尺寸</div>
+                <div class="detail-text en">
+                    <em>2.5 × 3.5 inches</em> — the precise standard of ACEO,<br>
+                    a canvas no larger than a playing card
+                </div>
+                <div class="detail-text zh hidden">
+                    <em>2.5 × 3.5 英寸</em> — ACEO 的精确标准，<<br>
+                    一张扑克牌大小的画布
+                </div>
             </div>
+            
             <div class="detail-item">
                 <div class="detail-label en">Materials</div>
                 <div class="detail-label zh hidden">材料</div>
-                <div class="detail-text en">Tea-stained paper, vintage magazine fragments, Mod Podge seal</div>
-                <div class="detail-text zh hidden">茶染纸、复古杂志碎片、Mod Podge 封层</div>
+                <div class="detail-text en">
+                    Archival tea-stained paper, fragments of vintage periodicals,<br>
+                    sealed with Mod Podge — each element chosen for its patina
+                </div>
+                <div class="detail-text zh hidden">
+                    档案级茶染纸、 vintage 期刊碎片，<<br>
+                    以 Mod Podge 封层——每件元素皆因其包浆而入选
+                </div>
             </div>
+            
             <div class="detail-item">
                 <div class="detail-label en">Process</div>
                 <div class="detail-label zh hidden">工艺</div>
-                <div class="detail-text en">Handcrafted originals and limited digital editions with gold-leaf edges</div>
-                <div class="detail-text zh hidden">手工原作与限量数字版，饰以金箔边</div>
+                <div class="detail-text en">
+                    Handcrafted originals and limited digital editions,<br>
+                    each finished with <em>gold-leaf edges</em> — a touch of permanence
+                </div>
+                <div class="detail-text zh hidden">
+                    手工原作与限量数字版，<<br>
+                    每件以<<em>金箔边</em>收束——一丝永恒的触感
+                </div>
             </div>
+            
             <div class="detail-item">
-                <div class="detail-label en">Identity</div>
-                <div class="detail-label zh hidden">身份</div>
-                <div class="detail-text en">Every piece includes a QR code linking to its provenance and ownership history</div>
-                <div class="detail-text zh hidden">每件作品附有二维码，链接其来源与收藏历史</div>
+                <div class="detail-label en">Provenance</div>
+                <div class="detail-label zh hidden">传承</div>
+                <div class="detail-text en">
+                    Every piece carries a unique QR code —<<br>
+                    a digital ledger of its creation, ownership, and journey
+                </div>
+                <div class="detail-text zh hidden">
+                    每件作品附有唯一二维码——<<br>
+                    记录其诞生、收藏与流转的数字档案
+                </div>
             </div>
         </div>
         
@@ -218,7 +290,7 @@
             <a href="mailto:17610ivanzhu@gmail.com">Email</a>
         </div>
         
-        <div class="location en">Temecula, CA</div>
+        <div class="location en">Temecula, California</div>
         <div class="location zh hidden">加州蒂梅丘拉</div>
     </div>
     
@@ -248,5 +320,3 @@
     </script>
 </body>
 </html>
-
-

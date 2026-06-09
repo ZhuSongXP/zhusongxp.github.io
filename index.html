@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZhuSong — ACEO Art Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f5f0e8;
+            color: #3d3d3d;
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.8;
+        }
+        
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .lang-switch button {
+            background: none;
+            border: 1px solid #d4c5b0;
+            color: #8b7355;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.75em;
+            transition: all 0.3s;
+        }
+        
+        .lang-switch button:hover {
+            background: #d4c5b0;
+            color: #fff;
+        }
+        
+        .lang-switch button.active {
+            background: #8b7355;
+            color: #fff;
+            border-color: #8b7355;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 60px 30px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            letter-spacing: 8px;
+            color: #5c4a3d;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 0.85em;
+            color: #a08060;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        
+        .divider {
+            width: 50px;
+            height: 1px;
+            background: #d4c5b0;
+            margin: 0 auto 40px;
+        }
+        
+        .tagline {
+            font-size: 1.1em;
+            color: #8b7355;
+            font-style: italic;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .details {
+            text-align: left;
+            background: #fff;
+            border: 1px solid #d4c5b0;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .detail-item {
+            margin-bottom: 20px;
+        }
+        
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-label {
+            font-size: 0.7em;
+            color: #b0a090;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        
+        .detail-text {
+            font-size: 0.95em;
+            color: #5c4a3d;
+        }
+        
+        .links {
+            margin-bottom: 40px;
+        }
+        
+        .links a {
+            display: inline-block;
+            color: #5c4a3d;
+            text-decoration: none;
+            border: 1px solid #d4c5b0;
+            padding: 10px 28px;
+            margin: 0 8px 10px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        
+        .links a:hover {
+            background: #5c4a3d;
+            color: #f5f0e8;
+            border-color: #5c4a3d;
+        }
+        
+        .location {
+            font-size: 0.8em;
+            color: #b0a090;
+            letter-spacing: 2px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 480px) {
+            .lang-switch {
+                position: static;
+                margin-bottom: 20px;
+                text-align: right;
+                padding: 0 20px;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <button class="active" onclick="switchLang('en')" id="btn-en">EN</button>
+        <button onclick="switchLang('zh')" id="btn-zh">中文</button>
+    </div>
+    
+    <div class="container">
+        <h1>ZHUSONG</h1>
+        <div class="subtitle en">ACEO Art Cards</div>
+        <div class="subtitle zh hidden">ACEO 艺术卡片</div>
+        <div class="divider"></div>
+        
+        <div class="tagline en">
+            "Each card carries a story — tea-stained, collaged, and sealed with time."
+        </div>
+        <div class="tagline zh hidden">
+            "每张卡片都承载着一个故事——茶染、拼贴、被时间封存。"
+        </div>
+        
+        <div class="details">
+            <div class="detail-item">
+                <div class="detail-label en">Format</div>
+                <div class="detail-label zh hidden">规格</div>
+                <div class="detail-text en">2.5 × 3.5 inches — the standard ACEO size</div>
+                <div class="detail-text zh hidden">2.5 × 3.5 英寸——标准 ACEO 尺寸</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label en">Materials</div>
+                <div class="detail-label zh hidden">材料</div>
+                <div class="detail-text en">Tea-stained paper, vintage magazine fragments, Mod Podge seal</div>
+                <div class="detail-text zh hidden">茶染纸、复古杂志碎片、Mod Podge 封层</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label en">Process</div>
+                <div class="detail-label zh hidden">工艺</div>
+                <div class="detail-text en">Handcrafted originals and limited digital editions with gold-leaf edges</div>
+                <div class="detail-text zh hidden">手工原作与限量数字版，饰以金箔边</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label en">Identity</div>
+                <div class="detail-label zh hidden">身份</div>
+                <div class="detail-text en">Every piece includes a QR code linking to its provenance and ownership history</div>
+                <div class="detail-text zh hidden">每件作品附有二维码，链接其来源与收藏历史</div>
+            </div>
+        </div>
+        
+        <div class="links">
+            <a href="https://instagram.com/zhusongxp" target="_blank">Instagram</a>
+            <a href="mailto:17610ivanzhu@gmail.com">Email</a>
+        </div>
+        
+        <div class="location en">Temecula, CA</div>
+        <div class="location zh hidden">加州蒂梅丘拉</div>
+    </div>
+    
+    <script>
+        function switchLang(lang) {
+            const enElements = document.querySelectorAll('.en');
+            const zhElements = document.querySelectorAll('.zh');
+            const btnEn = document.getElementById('btn-en');
+            const btnZh = document.getElementById('btn-zh');
+            
+            if (lang === 'en') {
+                enElements.forEach(el => el.classList.remove('hidden'));
+                zhElements.forEach(el => el.classList.add('hidden'));
+                btnEn.classList.add('active');
+                btnZh.classList.remove('active');
+                document.documentElement.lang = 'en';
+                document.title = 'ZhuSong — ACEO Art Cards';
+            } else {
+                enElements.forEach(el => el.classList.add('hidden'));
+                zhElements.forEach(el => el.classList.remove('hidden'));
+                btnEn.classList.remove('active');
+                btnZh.classList.add('active');
+                document.documentElement.lang = 'zh';
+                document.title = 'ZhuSong — ACEO 艺术卡片';
+            }
+        }
+    </script>
+</body>
+</html>
+
 
